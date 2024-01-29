@@ -1,0 +1,7 @@
+#tooltip{
+    width: 150px;
+    height: 50px;
+    background-color: red;
+    text-align: center;
+    visibility: hidden;
+}
