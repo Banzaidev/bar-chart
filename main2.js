@@ -32,17 +32,12 @@ const scaleX = d3.scaleTime()
 .domain([d3.min(data, d => new Date(d[0])), d3.max(data, d => new Date(d[0]))])
 .range([padding, width - padding])
 
-
 d3.select('#app')
 .append('svg')
 .attr('width', width)
 .attr('height', height)
 
 
-
-
-d3.select('#app').append('div')
-.attr('id', 'tooltip')
 
 d3.select('svg')
 .append('g')
@@ -64,25 +59,11 @@ d3.select('svg')
 .enter()
 .append('rect')
 .attr('class', 'bar')
-.on('mouseover', (e) => {
-    const date = e.target.attributes['data-date'].value
-    const gdp = e.target.attributes['data-gdp'].value
-    console.log(e.screenX)
-    d3.select('#tooltip')
-    .style('visibility', 'visible')
-    .attr('data-date', date)
-    .attr('data-gdp', gdp)
-    //.attr('transform', `translate(${e.clientX}px, ${e.clientY}px)`)
-    .html(`Date: ${date} \n GDP: ${gdp}`)
-    
-})
-.on('mouseleave', (e) => {
-    d3.select('#tooltip')
-    .style('visibility', 'hidden')
-})
 .attr('data-date', (d) => d[0])
 .attr('data-gdp', (d) => d[1])
-.attr('width', 3)
+.attr('width', 1.2)
 .attr('height', (d) => height - padding - scaleY(d[1]))
 .attr('x', (d) => scaleX(new Date(d[0])))
 .attr('y', (d) => scaleY(d[1]))
+
+
