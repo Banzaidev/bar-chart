@@ -41,17 +41,30 @@ d3.select('#app')
 
 
 
+
 d3.select('#app').append('div')
 .attr('id', 'tooltip')
 
+d3.select('#app')
+.append('p')
+.attr('id','author')
+.html('by ')
+.insert('a')
+.attr('target','__blank')
+.attr('href',"https://github.com/Banzaidev")
+.html('Banzaidev')
+
+
 d3.select('svg')
 .append('g')
+.attr('class','axis')
 .attr('id', 'x-axis')
 .attr("transform", `translate(0,${height - padding})`)
 .call(d3.axisBottom().scale(scaleAxisX))
 
 d3.select('svg')
 .append('g')
+.attr('class','axis')
 .attr("transform", `translate(${padding},${0})`)
 .attr('id', 'y-axis')
 .call(d3.axisLeft().scale(scaleAxisY))
@@ -67,12 +80,16 @@ d3.select('svg')
 .on('mouseover', (e) => {
     const date = e.target.attributes['data-date'].value
     const gdp = e.target.attributes['data-gdp'].value
-    console.log(e.screenX)
+    const x = e.target.attributes['x'].value
+    const heightRect = e.target.attributes['height'].value
+    console.log(e)
     d3.select('#tooltip')
     .style('visibility', 'visible')
     .attr('data-date', date)
     .attr('data-gdp', gdp)
-    //.attr('transform', `translate(${e.clientX}px, ${e.clientY}px)`)
+    .style('top', `${e.clientX} + 20px`)
+    .style('left', `${e.clientY  + 20}px`)
+    .style('transform', `translate(${x-387}px, ${-padding-heightRect-100}px`)
     .html(`Date: ${date} \n GDP: ${gdp}`)
     
 })
