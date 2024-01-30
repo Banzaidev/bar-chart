@@ -1,1 +1,1 @@
-Bar Chart - Data Visualization Projects (freeCodeCamp) live site
+Bar Chart - Data Visualization Projects (freeCodeCamp) live site : https://bar-chart-six.vercel.app/
