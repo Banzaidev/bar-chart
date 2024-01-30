@@ -40,8 +40,6 @@ d3.select('#app')
 
 
 
-
-
 d3.select('#app').append('div')
 .attr('id', 'tooltip')
 
